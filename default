@@ -1,0 +1,21 @@
+server {
+	listen 80;
+	listen [::]:80;
+
+	server_name wordpress;
+
+	root /var/www/wordpress;
+	index index.php index.html index.htm ;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+	location ~\.php$ {
+	set $root_path /var/www/wordpress;
+	fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+	fastcgi_index index.php;
+	fastcgi_param SCRIPT_FILENAME $root_path$fastcgi_script_name;
+	include fastcgi_params;
+	fastcgi_param DOCUMENT_ROOT $root_path;
+	}
+}
