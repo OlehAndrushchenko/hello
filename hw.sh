@@ -16,7 +16,7 @@ sudo systemctl start php7.4-fpm
 sudo systemctl stop apache2
 wget https://wordpress.org/latest.tar.gz
 tar -xvzf latest.tar.gz
-sudo mv wordpress /var/www/wordpress
+sudo mv wordpress /var/www
 sudo chown -R www-data:www-data /var/www/wordpress
 sudo chmod -R 777 /var/www/wordpress
 sudo cp -R wp-config-sample.php /var/www/wordpress
